@@ -24,7 +24,7 @@ function getUsers(req, res, next) {
         }, {
           model: models.UserHobbyBridge,
           attributes: ['id'],
-          // attributes: {include: ['id']},
+          // attributes: {include: ['id']}, // Same meaning as above
           include: [{
             model: models.Hobby,
           }],
@@ -32,7 +32,7 @@ function getUsers(req, res, next) {
       ],
     })
     // Or, you can include all the associations with one line
-    // Set nested to true when include in nested like above
+    // Set nested to true when "include" is nested like above
     // .findAll({ include: [{all: true, nested: true}]})
     .then(function (users) {
       res.json({data: users});
@@ -60,7 +60,7 @@ function putUser(req, res, next) {
   let userId = req.body.id;
   let data = {
     name: req.body.name,
-    occupationId: req.query.occupationId
+    occupationId: req.body.occupationId
   };
 
   models.User
