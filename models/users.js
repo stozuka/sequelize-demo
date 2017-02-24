@@ -18,8 +18,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
   }, {
-    // If model name (User) and table name (users) is different, define tableName
-    tableName: 'users',
     // If you want to change the table name when it's eagerly queried by the other model having belongsTo(User), belongsToMany(User) etc, define the names here.
     // "singular" is used when User model is eagerly queried using belongsTo (or hasOne) method by the other model
     // "plural" is used when User model is eagerly queried using belongsToMany method by the other model
@@ -30,6 +28,8 @@ module.exports = function(sequelize, DataTypes) {
     // Sequelize tries to infer table name from model name (User). For example, if the model name is User, the table name is inferred as users (plural).
     // If you want to disable this function, you can set freezeTableName to true
     freezeTableName: true,
+    // If model name (User) and table name (users) is different, define tableName
+    tableName: 'users',
     // When underscored is true, Sequelize tries to change key names from camel case to snake case when processing the query (save, update, delete, etc).
     underscored: true,
     // Sequelize assumes the table has createdAt, updateAt, and deletedAt field, and automatically update these fields when querying. If the table doesn't have these fields, you can set timestamps to false.
