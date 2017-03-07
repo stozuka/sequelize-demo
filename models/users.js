@@ -54,9 +54,12 @@ module.exports = function(sequelize, DataTypes) {
       // If you want to customize the returning object, you can override toJSON method here ("serialize" of Bookshelf)
       toJSON: function () {
         // Instance can be accessed by "this"
-        let hobbies = this.userHobbyBridge.map(function (bridge) {
-          return {id: bridge.hobby.id ,hobby: bridge.hobby.hobby};
-        });
+        let hobbies;
+        if (this.userHobbyBridge) {
+          hobbies = this.userHobbyBridge.map(function (bridge) {
+            return {id: bridge.hobby.id ,hobby: bridge.hobby.hobby};
+          });
+        }
 
         return {
           id: this.id,

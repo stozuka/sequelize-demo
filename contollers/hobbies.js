@@ -17,6 +17,8 @@ function postHobbies(req, res, next) {
   // [{hobby: "Travelling", {hobby: "Running"}]
   let hobbiesObjArr = createHobbiesObjArr(req);
 
+  console.log(hobbiesObjArr);
+
   models.Hobby
     .bulkCreate(hobbiesObjArr)
     .then(function () {

@@ -1,5 +1,6 @@
 'use strict';
 
+
 // Main modules
 const express = require('express');
 const path = require('path');
@@ -25,6 +26,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const corsConfig = require('./config/cors_config');
+app.use(corsConfig);
 
 // Routes
 app.use('/', index);

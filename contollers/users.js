@@ -50,7 +50,7 @@ function postUser(req, res, next) {
   models.User
     .create(data)
     .then(function (saved) {
-      res.json(saved.toJSON());
+      res.json(saved);
       return null;
     })
     .catch(next);
